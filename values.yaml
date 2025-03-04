@@ -169,7 +169,8 @@ tenant:
       # The Kubernetes scheduler uses these selectors to determine which worker nodes onto which it can deploy Tenant pods.
       #
       # If no worker nodes match the specified selectors, the Tenant deployment will fail.
-      nodeSelector: { }
+      nodeSelector:
+        kubernetes.io/hostname: nwa04
       ###
       #
       # The `affinity <https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/>`__ or anti-affinity settings to apply to Tenant pods.
@@ -343,6 +344,8 @@ tenant:
   # - Specify ``quiet`` to supress logging.
   #
   # An example of JSON-formatted logs is as follows:
+  nodeSelector:
+    kubernetes.io/hostname: nwa04
   #
   # .. code-block:: shell
   #
