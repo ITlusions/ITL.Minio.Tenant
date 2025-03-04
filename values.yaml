@@ -89,7 +89,7 @@ tenant:
   #    secretKey: minio123
   #
   configSecret:
-    name: itlminio01-sec
+    name: itlminio01-env-configuration
     #accessKey: minio
     #secretKey: minio123
     existingSecret: true
@@ -307,12 +307,36 @@ tenant:
   podManagementPolicy: Parallel
   # The `Liveness Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes>`__ for monitoring Tenant pod liveness. 
   # Tenant pods will be restarted if the probe fails.
-  liveness: { }
+  liveness: 
+    initialDelaySeconds: 15
+    periodSeconds: 15
+    timeoutSeconds: 20
+    successThreshold: 1
+    failureThreshold: 3
+    httpGet:
+      path: /minio/health/live
+      port: 443
+      scheme: HTTPS
+      httpHeaders:
+        - name: Host
+          value: minio01.dev.itlusions.com
   ###
   # `Readiness Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring Tenant container readiness.
   # Tenant pods will be removed from service endpoints if the probe fails.
-  readiness: { }
-  ###
+  readiness: 
+    initialDelaySeconds: 15
+    periodSeconds: 15
+    timeoutSeconds: 20
+    successThreshold: 1
+    failureThreshold: 3
+    httpGet:
+      path: /minio/health/cluster
+      port: 443
+      scheme: HTTPS
+      httpHeaders:
+        - name: Host
+          value: minio01.dev.itlusions.com
+    ###
   # `Startup Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring container startup. 
   # Tenant pods will be restarted if the probe fails.
   # Refer 
