@@ -315,8 +315,8 @@ tenant:
     failureThreshold: 3
     httpGet:
       path: /minio/health/live
-      port: 443
-      scheme: HTTPS
+      port: 9090
+      scheme: HTTP
       httpHeaders:
         - name: Host
           value: minio01.dev.itlusions.com
@@ -331,8 +331,8 @@ tenant:
     failureThreshold: 3
     httpGet:
       path: /minio/health/cluster
-      port: 443
-      scheme: HTTPS
+      port: 9090
+      scheme: HTTP
       httpHeaders:
         - name: Host
           value: minio01.dev.itlusions.com
