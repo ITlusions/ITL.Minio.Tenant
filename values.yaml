@@ -90,8 +90,8 @@ tenant:
   #
   configSecret:
     name: minio-root-secret
-    #accessKey: minio
-    #secretKey: minio123
+    accessKey: minio
+    secretKey: minio123
     existingSecret: true
 
   ###
