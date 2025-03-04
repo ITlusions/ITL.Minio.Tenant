@@ -131,7 +131,7 @@ tenant:
     - servers: 1
       ###
       # Custom name for the pool
-      name: pool-0
+      name: itlminio01-pool-0
       ###
       # The number of volumes attached per MinIO Tenant Pod / Server.
       volumesPerServer: 1
