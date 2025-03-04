@@ -89,7 +89,7 @@ tenant:
   #    secretKey: minio123
   #
   configSecret:
-    name: itlminio01-env-configuration
+    name: minio-root-secret
     #accessKey: minio
     #secretKey: minio123
     existingSecret: true
