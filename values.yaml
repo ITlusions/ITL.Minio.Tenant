@@ -89,10 +89,10 @@ tenant:
   #    secretKey: minio123
   #
   configSecret:
-    name: minio-root-secret
+    name: itlminio01-env-configuration
     accessKey: minio
     secretKey: minio123
-    existingSecret: true
+    existingSecret: false
 
   ###
   # Metadata that will be added to the statefulset and pods of all pools
