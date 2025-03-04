@@ -488,7 +488,7 @@ ingress:
     labels: { }
     annotations: { }
     tls: [ ]
-    host: minio.local
+    host: minio01.dev.itlusions.com
     path: /
     pathType: Prefix
   console:
@@ -497,7 +497,7 @@ ingress:
     labels: { }
     annotations: { }
     tls: [ ]
-    host: minio-console.local
+    host: minio-console.dev.itlusions.com
     path: /
     pathType: Prefix
 # Use an extraResources template section to include additional Kubernetes resources
