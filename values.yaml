@@ -316,7 +316,7 @@ tenant:
     httpGet:
       path: /minio/health/live
       port: 9000
-      scheme: HTTPS
+      scheme: HTTP
   ###
   # `Readiness Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring Tenant container readiness.
   # Tenant pods will be removed from service endpoints if the probe fails.
@@ -329,7 +329,7 @@ tenant:
     httpGet:
       path: /minio/health/cluster
       port: 9000
-      scheme: HTTPS
+      scheme: HTTP
     ###
   # `Startup Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring container startup. 
   # Tenant pods will be restarted if the probe fails.
