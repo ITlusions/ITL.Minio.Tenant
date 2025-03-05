@@ -307,6 +307,10 @@ tenant:
   podManagementPolicy: Parallel
   # The `Liveness Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes>`__ for monitoring Tenant pod liveness. 
   # Tenant pods will be restarted if the probe fails.
+  ports:
+  - name: liveness-port
+    containerPort: 9000
+  
   liveness: 
     initialDelaySeconds: 15
     periodSeconds: 15
@@ -315,7 +319,7 @@ tenant:
     failureThreshold: 3
     httpGet:
       path: /minio/health/live
-      port: 9000
+      port: liveness-port
       scheme: HTTP
   ###
   # `Readiness Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring Tenant container readiness.
@@ -328,7 +332,7 @@ tenant:
     failureThreshold: 3
     httpGet:
       path: /minio/health/cluster
-      port: 9000
+      port: liveness-port
       scheme: HTTP
     ###
   # `Startup Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring container startup. 
