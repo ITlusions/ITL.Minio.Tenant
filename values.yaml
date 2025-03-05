@@ -310,26 +310,19 @@ tenant:
   liveness: 
     initialDelaySeconds: 15
     periodSeconds: 15
-    timeoutSeconds: 20
-    successThreshold: 1
-    failureThreshold: 3
     httpGet:
-      path: /minio/health/live
+      path: /
       port: 9090
-      scheme: HTTP
+
   ###
   # `Readiness Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring Tenant container readiness.
   # Tenant pods will be removed from service endpoints if the probe fails.
   readiness: 
     initialDelaySeconds: 15
     periodSeconds: 15
-    timeoutSeconds: 20
-    successThreshold: 1
-    failureThreshold: 3
     httpGet:
-      path: /minio/health/cluster
+      path: /
       port: 9090
-      scheme: HTTP
     ###
   # `Startup Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring container startup. 
   # Tenant pods will be restarted if the probe fails.
