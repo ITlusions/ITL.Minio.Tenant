@@ -315,7 +315,7 @@ tenant:
     failureThreshold: 3
     httpGet:
       path: /minio/health/live
-      port: 9000
+      port: 9090
       scheme: HTTP
   ###
   # `Readiness Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring Tenant container readiness.
@@ -328,7 +328,7 @@ tenant:
     failureThreshold: 3
     httpGet:
       path: /minio/health/cluster
-      port: 9000
+      port: 9090
       scheme: HTTP
     ###
   # `Startup Probe <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/>`__ for monitoring container startup. 
