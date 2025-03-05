@@ -315,7 +315,7 @@ tenant:
     failureThreshold: 3
     httpGet:
       path: /minio/health/live
-      port: 9090
+      port: 9000
       scheme: HTTP
       httpHeaders:
         - name: Host
@@ -331,7 +331,7 @@ tenant:
     failureThreshold: 3
     httpGet:
       path: /minio/health/cluster
-      port: 9090
+      port: 9000
       scheme: HTTP
       httpHeaders:
         - name: Host
