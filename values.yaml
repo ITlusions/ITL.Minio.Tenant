@@ -4,7 +4,7 @@ tenant:
   # The Tenant name
   #
   # Change this to match your preferred MinIO Tenant name.
-  name: itlminio01
+  name:
   ###
   # Specify the Operator container image to use for the deployment.
   # ``image.tag`` 
@@ -70,7 +70,7 @@ tenant:
   # The Kubernetes secret name that contains MinIO environment variable configurations.
   # The secret is expected to have a key named config.env containing environment variables exports.
   configuration:
-    name: itlminio01-env-configuration
+    name:
   ###
   # Root key for dynamically creating a secret for use with configuring root MinIO User
   # Specify the ``name`` and then a list of environment variables.
@@ -89,7 +89,7 @@ tenant:
   #    secretKey: minio123
   #
   configSecret:
-    name: itlminio01-env-configuration
+    name:
     #accessKey: minio
     #secretKey: minio123
     existingSecret: true
@@ -131,7 +131,7 @@ tenant:
     - servers: 1
       ###
       # Custom name for the pool
-      name: itlminio01-pool-0
+      name:
       ###
       # The number of volumes attached per MinIO Tenant Pod / Server.
       volumesPerServer: 1
@@ -230,7 +230,7 @@ tenant:
   #    Treat the ``mountPath`` and ``subPath`` values as immutable once you deploy the Tenant.
   #    If you change these values post-deployment, then you may have different paths for new and pre-existing data.
   #    This can vastly increase operational complexity and may result in unpredictable data states.
-  subPath: /itlminio01
+  subPath:
   ###
   # Configures a Prometheus-compatible scraping endpoint at the specified port.
   metrics:
