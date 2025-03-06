@@ -502,37 +502,36 @@ tenant:
 # Configures `Ingress <https://kubernetes.io/docs/concepts/services-networking/ingress/>`__ for the Tenant S3 API and Console.
 #
 # Set the keys to conform to the Ingress controller and configuration of your choice.
-# ingress:
-#   api:
-#     enabled: true
-#     ingressClassName: ""
-#     labels: { }
-#     annotations: 
-#       traefik.ingress.kubernetes.io/router.entrypoints: web, websecure  # Specify entry points
-#       ingressClassName: "traefik"
-#       cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-#     tls:
-#     - secretName: minio01-dev-itlusions-com-tls
-#       hosts:
-#         - minio01.dev.itlusions.com
-#     host: minio01.dev.itlusions.com
-#     path: /
-#     pathType: Prefix
-#   console:
-#     enabled: true
-#     ingressClassName: ""
-#     labels: { }
-#     annotations: 
-#       traefik.ingress.kubernetes.io/router.entrypoints: web, websecure  # Specify entry points
-#       ingressClassName: "traefik"
-#       cert-manager.io/cluster-issuer: "letsencrypt-issuer"
-#     tls:
-#     - secretName: minio-console-dev-itlusions-com-tls
-#       hosts:
-#         - minio-console.dev.itlusions.com
-#     host: minio-console.dev.itlusions.com
-#     path: /
-#     pathType: Prefix
+ingress:
+  api:
+    enabled: true
+    ingressClassName: ""
+    labels: { }
+    annotations: 
+      traefik.ingress.kubernetes.io/router.entrypoints: web, websecure  # Specify entry points
+      ingressClassName: "traefik"
+      cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    tls:
+    - secretName:
+      hosts:
+
+    host:
+    path: /
+    pathType: Prefix
+  console:
+    enabled: true
+    ingressClassName: ""
+    labels: { }
+    annotations: 
+      traefik.ingress.kubernetes.io/router.entrypoints: web, websecure  # Specify entry points
+      ingressClassName: "traefik"
+      cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    tls:
+    - secretName: 
+      hosts:
+    host: 
+    path: /
+    pathType: Prefix
 # Use an extraResources template section to include additional Kubernetes resources
 # with the Helm deployment.
 #extraResources:
