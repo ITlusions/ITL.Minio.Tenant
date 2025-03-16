@@ -10,7 +10,7 @@ tenant:
   configuration:
     name: itlminio01-env-configuration
   configSecret:
-    name: itlminio01-env-secret
+    name: itlminio01-env-configuration
     existingSecret: false
   poolsMetadata:
     annotations: { }
