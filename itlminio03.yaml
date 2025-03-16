@@ -76,7 +76,7 @@ tenant:
   serviceAccountName: ""
   prometheusOperator: false
   nodeSelector:
-    kubernetes.io/hostname: nwa04
+    kubernetes.io/hostname: nwa03
   logging: { }
   serviceMetadata: { }
   env: [ ]
