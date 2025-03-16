@@ -5,10 +5,10 @@
 {{- fail "# ERROR: '.tenant.configSecret' should be set." }}
 {{- else }}
 {{- if not (.Values.tenant.configSecret.existingSecret) }}
-
+{{- $secretName := dig "tenant" "configSecret" "name" "" (.Values | merge (dict)) -}}
 
 {{- $namespace := .Release.Namespace -}}
-{{- $existingSecret := lookup "v1" "Secret" $namespace {{ dig "tenant" "configSecret" "name" "" (.Values | merge (dict)) }} -}}
+{{- $existingSecret := lookup "v1" "Secret" $namespace $secretName -}}
 
 {{- if not $existingSecret }}
 apiVersion: v1
