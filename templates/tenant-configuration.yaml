@@ -22,7 +22,7 @@ kind: Secret
 metadata:
   name: {{ dig "tenant" "configSecret" "name" "" (.Values | merge (dict)) }}
   labels:
-    app.kubernetes.io/instance: itl-minio01
+    app.kubernetes.io/instance: {{ .Values.tenant.name | default "minios3" | quote }}
 type: Opaque
 stringData:
   config.env: |-
