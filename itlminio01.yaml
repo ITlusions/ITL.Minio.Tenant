@@ -75,7 +75,6 @@ tenant:
       path: /minio/health/live
       port: minio-port
       scheme: HTTP
-      host: minio.itl-minio01.svc.cluster.local
   readiness: 
     initialDelaySeconds: 15
     periodSeconds: 15
@@ -86,7 +85,6 @@ tenant:
       path: /minio/health/cluster
       port: minio-port
       scheme: HTTP
-      host: minio.itl-minio01.svc.cluster.local
   startup: { }
   lifecycle: { }
   exposeServices: { }
