@@ -11,7 +11,7 @@ tenant:
     name: itlminio01-env-configuration
   configSecret:
     name: itlminio01-env-secret
-    existingSecret: true
+    existingSecret: false
   poolsMetadata:
     annotations: { }
     labels: { }
