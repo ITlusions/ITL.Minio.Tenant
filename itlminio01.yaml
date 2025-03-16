@@ -49,6 +49,9 @@ tenant:
       topologySpreadConstraints: [ ]
   mountPath: /export
   subPath: /itlminio01
+  minioBrowserRedirectUrl: https://itlminio01-console.dev.itlusions.com/
+  consoleTlsHostname: itlminio01-console.dev.itlusions.com
+  consoleTlsPort: 443
   metrics:
     enabled: false
     port: 9000

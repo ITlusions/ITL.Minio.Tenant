@@ -4,6 +4,12 @@
 {{- if not (.Values.tenant.configSecret) }}
 {{- fail "# ERROR: '.tenant.configSecret' should be set." }}
 {{- else }}
+{{- if not (.Values.tenant.consoleTlsHostname) }}
+{{- fail "# ERROR: '.tenant.consoleTlsHostname' should be set." }}
+{{- else }}
+{{- if not (.Values.tenant.minioBrowserRedirectUrl) }}
+{{- fail "# ERROR: '.tenant.minioBrowserRedirectUrl' should be set." }}
+{{- else }}
 {{- if not (.Values.tenant.configSecret.existingSecret) }}
 {{- $secretName := dig "tenant" "configSecret" "name" "" (.Values | merge (dict)) -}}
 
@@ -23,8 +29,8 @@ stringData:
     export MINIO_ROOT_USER={{ .Values.tenant.configSecret.accessKey | default "nwa" | quote }}
     export MINIO_ROOT_PASSWORD={{ .Values.tenant.configSecret.secretKey | default (randAlphaNum 20) | b64enc | quote }}
     export CONSOLE_TLS_PORT={{ .Values.tenant.consoleTlsPort | default "443" | quote }}
-    export CONSOLE_TLS_HOSTNAME={{ .Values.tenant.consoleTlsHostname | default "itlminio01-console.dev.itlusions.com" | quote }}
-    export MINIO_BROWSER_REDIRECT_URL={{ .Values.tenant.minioBrowserRedirectUrl | default "https://itlminio01-console.dev.itlusions.com/" | quote }}
+    export CONSOLE_TLS_HOSTNAME={{ .Values.tenant.consoleTlsHostname | quote }}
+    export MINIO_BROWSER_REDIRECT_URL={{ .Values.tenant.minioBrowserRedirectUrl | quote }}
 
 {{- else }}
 {{- $existingSecret.data.config.env | b64dec | nindent 2 }}
