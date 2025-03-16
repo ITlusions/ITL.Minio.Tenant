@@ -27,15 +27,7 @@ stringData:
 {{- else }}
 {{- $existingSecret.data.config.env | b64dec | nindent 2 }}
 {{- end }}
-
-
 {{- else }}
-{{- if (.Values.tenant.configSecret.accessKey) }}
-{{- fail "# ERROR: cannot set access-key when an existing secret is used" }}
-{{- end }}
-{{- if (.Values.tenant.configSecret.secretKey) }}
-{{- fail "# ERROR: cannot set secret-key when an existing secret is used" }}
-{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
