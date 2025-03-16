@@ -27,7 +27,7 @@ tenant:
       labels: { }
       tolerations: [ ]
       nodeSelector:
-        kubernetes.io/hostname: nwa04
+        kubernetes.io/hostname: nwa03
       affinity: { }
       resources: { }
       securityContext:
