@@ -2,7 +2,7 @@ tenant:
   name: itlminio01
   image:
     repository: quay.io/minio/minio
-    tag: RELEASE.2024-11-07T00-52-20Z
+    tag: latest
     pullPolicy: IfNotPresent
   imagePullSecret: { }
   initContainers: [ ]
