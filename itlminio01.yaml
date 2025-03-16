@@ -65,26 +65,8 @@ tenant:
   buckets: [ ]
   users: [ ]
   podManagementPolicy: Parallel
-  liveness: 
-    initialDelaySeconds: 15
-    periodSeconds: 15
-    timeoutSeconds: 20
-    successThreshold: 1
-    failureThreshold: 3
-    httpGet:
-      path: /minio/health/live
-      port: minio-port
-      scheme: HTTP
-  readiness: 
-    initialDelaySeconds: 15
-    periodSeconds: 15
-    timeoutSeconds: 20
-    successThreshold: 1
-    failureThreshold: 3
-    httpGet:
-      path: /minio/health/cluster
-      port: minio-port
-      scheme: HTTP
+  liveness: {}
+  readiness: {}
   startup: { }
   lifecycle: { }
   exposeServices: { }
