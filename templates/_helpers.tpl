@@ -16,7 +16,7 @@ Usage:
 {{- $length := 16 -}}
 {{- $charset := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" -}}
 {{- $password := "" -}}
-{{- range seq 1 $length -}}
+{{- range $i, $e := until $length -}}
   {{- $index := randInt (len $charset) -}}
   {{- $password = printf "%s%s" $password (index $charset $index) -}}
 {{- end -}}
