@@ -29,13 +29,15 @@ stringData:
     export MINIO_ROOT_USER={{ .Values.tenant.configSecret.accessKey | default "nwa" | quote }}
     export MINIO_ROOT_PASSWORD={{ .Values.tenant.configSecret.secretKey | default (randAlphaNum 20) | b64enc | quote }}
     export CONSOLE_TLS_PORT={{ .Values.tenant.consoleTlsPort | default "443" | quote }}
-    export CONSOLE_TLS_HOSTNAME={{ .Values.tenant.consoleTlsHostname | quote }}
-    export MINIO_BROWSER_REDIRECT_URL={{ .Values.tenant.minioBrowserRedirectUrl | quote }}
+    export CONSOLE_TLS_HOSTNAME={{ .Values.tenant.consoleTlsHostname | default "example-console.dev.itlusions.com" | quote }}
+    export MINIO_BROWSER_REDIRECT_URL={{ .Values.tenant.minioBrowserRedirectUrl | default "https://example-console.dev.itlusions.com/" | quote }}
 
 {{- else }}
 {{- $existingSecret.data.config.env | b64dec | nindent 2 }}
 {{- end }}
 {{- else }}
+{{- end }}
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
