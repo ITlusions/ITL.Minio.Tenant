@@ -20,14 +20,14 @@ tenant:
       name: itlminio02-pool-0
       volumesPerServer: 1
       size: 1Gi
-      storageClassName: openebs-hostpath
+      storageClassName: minio-data # set location on the node to /mnt/data-lv-01/minio
       storageAnnotations: { }
       storageLabels: { }
       annotations: { }
       labels: { }
       tolerations: [ ]
       nodeSelector:
-        kubernetes.io/hostname: nwa04
+        kubernetes.io/hostname: nwa02
       affinity: { }
       resources: { }
       securityContext:
@@ -76,7 +76,7 @@ tenant:
   serviceAccountName: ""
   prometheusOperator: false
   nodeSelector:
-    kubernetes.io/hostname: nwa04
+    kubernetes.io/hostname: nwa02
   logging: { }
   serviceMetadata: { }
   env: [ ]
