@@ -8,7 +8,7 @@ tenant:
   initContainers:
     - name: mc-init
       image: quay.io/minio/mc:latest
-      command: ["/bin/sh", "-c", "for i in $(seq 1 10); do echo $i; sleep 1; done"]
+      command: ["/bin/sh", "-c", "for i in $(seq 1 10); do echo $i; sleep 1; done; printenv"]
   scheduler: { }
   configuration:
     name: itlminio01-env-configuration
