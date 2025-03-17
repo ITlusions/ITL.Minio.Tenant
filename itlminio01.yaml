@@ -5,14 +5,14 @@ tenant:
     tag: latest
     pullPolicy: IfNotPresent
   imagePullSecret: { }
-  initContainers:
-    - name: mc-init
-      image: quay.io/minio/mc:latest
-      volumeMounts:
-        - name: init-script
-          mountPath: /init_script.sh
-          subPath: init_script.sh
-      command: ["/bin/sh", "-c", "/init_script.sh"]
+  initContainers: []
+    # - name: mc-init
+    #   image: quay.io/minio/mc:latest
+    #   volumeMounts:
+    #     - name: init-script
+    #       mountPath: /init_script.sh
+    #       subPath: init_script.sh
+    #   command: ["/bin/sh", "-c", "/init_script.sh"]
   scheduler: { }
   configuration:
     name: itlminio01-env-configuration
@@ -88,14 +88,9 @@ tenant:
   serviceMetadata: { }
   env: [ ]
   priorityClassName: ""
-  additionalVolumes: 
-    - name: init-script
-      configMap:
-        name: init-script
-  additionalVolumeMounts: 
-    - name: init-script
-      mountPath: /init_script.sh
-      subPath: init_script.sh
+  additionalVolumes: [ ]
+  additionalVolumeMounts: [ ]
+ingress:
   api:
     enabled: true
     ingressClassName: ""
