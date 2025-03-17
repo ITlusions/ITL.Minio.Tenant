@@ -92,8 +92,10 @@ tenant:
     - name: init-script
       configMap:
         name: init-script
-  additionalVolumeMounts: [ ]
-ingress:
+  additionalVolumeMounts: 
+    - name: init-script
+      mountPath: /init_script.sh
+      subPath: init_script.sh
   api:
     enabled: true
     ingressClassName: ""
