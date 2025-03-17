@@ -5,7 +5,10 @@ tenant:
     tag: latest
     pullPolicy: IfNotPresent
   imagePullSecret: { }
-  initContainers: [ ]
+  initContainers:
+    - name: mc-init
+      image: quay.io/minio/mc:latest
+      command: ["/bin/sh", "-c", "for i in $(seq 1 10); do echo $i; sleep 1; done"]
   scheduler: { }
   configuration:
     name: itlminio01-env-configuration
