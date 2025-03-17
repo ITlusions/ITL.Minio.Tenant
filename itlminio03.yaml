@@ -20,7 +20,7 @@ tenant:
       name: itlminio03-pool-0
       volumesPerServer: 1
       size: 1Gi
-      storageClassName: openebs-hostpath
+      storageClassName: minio-data # set location on the node to /mnt/data-lv-01/minio
       storageAnnotations: { }
       storageLabels: { }
       annotations: { }
