@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: init-script
+data:
+  init_script.sh: |
+    #!/bin/sh
+
+    # Check if the correct number of arguments is provided
+    if [ "$#" -lt 5 ]; then
+        echo "Usage: $0 <alias_name> <url> <username> <password> <bucket1> [<bucket2> ... <bucketN>]"
+        exit 1
+    fi
+
+    # Assign arguments to variables
+    ALIAS_NAME=$1
+    URL=$2
+    USERNAME=$3
+    PASSWORD=$4
+    shift 4
+    BUCKETS=("$@")
+
+    # Set the alias
+    until mc alias set "$ALIAS_NAME" "$URL" "$USERNAME" "$PASSWORD"; do
+        sleep 1
+    done
+
+    # Create buckets if they do not exist
+    for bucket in "${BUCKETS[@]}"; do
+        if ! mc ls "$ALIAS_NAME/$bucket" > /dev/null 2>&1; then
+            mc mb "$ALIAS_NAME/$bucket"
+        else
+            echo "Bucket $bucket already exists."
+        fi
+    done
