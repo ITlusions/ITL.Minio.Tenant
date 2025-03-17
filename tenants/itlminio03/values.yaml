@@ -1,0 +1,116 @@
+tenant:
+  name: itlminio03
+  image:
+    repository: quay.io/minio/minio
+    tag: latest
+    pullPolicy: IfNotPresent
+  imagePullSecret: { }
+  initContainers: [ ]
+  scheduler: { }
+  configuration:
+    name: itlminio03-env-configuration
+  configSecret:
+    name: itlminio03-env-configuration
+    existingSecret: false
+  poolsMetadata:
+    annotations: { }
+    labels: { }
+  pools:
+    - servers: 1
+      name: itlminio03-pool-0
+      volumesPerServer: 1
+      size: 1Gi
+      storageClassName: openebs-hostpath
+      storageAnnotations: { }
+      storageLabels: { }
+      annotations: { }
+      labels: { }
+      tolerations: [ ]
+      nodeSelector:
+        kubernetes.io/hostname: nwa03
+      affinity: { }
+      resources: { }
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+        runAsNonRoot: true
+      containerSecurityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        seccompProfile:
+          type: RuntimeDefault
+      topologySpreadConstraints: [ ]
+  mountPath: /export
+  subPath: /itlminio03
+  minioBrowserRedirectUrl: https://itlminio03-console.dev.itlusions.com/
+  consoleTlsHostname: itlminio03-console.dev.itlusions.com
+  consoleTlsPort: 443
+  metrics:
+    enabled: false
+    port: 9000
+    protocol: http
+  certificate:
+    externalCaCertSecret: [ ]
+    externalCertSecret: [ ]
+    requestAutoCert: false
+    certConfig: { }
+  features:
+    bucketDNS: false
+    domains: { }
+    enableSFTP: false
+  buckets: [ ]
+  users: [ ]
+  podManagementPolicy: Parallel
+  liveness: {}
+  readiness: {}
+  startup: { }
+  lifecycle: { }
+  exposeServices: { }
+  serviceAccountName: ""
+  prometheusOperator: false
+  nodeSelector:
+    kubernetes.io/hostname: nwa03
+  logging: { }
+  serviceMetadata: { }
+  env: [ ]
+  priorityClassName: ""
+  additionalVolumes: [ ]
+  additionalVolumeMounts: [ ]
+ingress:
+  api:
+    enabled: true
+    ingressClassName: ""
+    labels: { }
+    annotations: 
+      traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
+      ingressClassName: "traefik"
+      cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    tls:
+    - secretName: itlminio03-dev-itlusions-com-tls
+      hosts:
+        - itlminio03.dev.itlusions.com
+    host: itlminio03.dev.itlusions.com
+    path: /
+    pathType: Prefix
+  console:
+    enabled: true
+    ingressClassName: ""
+    labels: { }
+    annotations: 
+      traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
+      ingressClassName: "traefik"
+      cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+    tls:
+    - secretName: itlminio03-console-dev-itlusions-com-tls
+      hosts:
+        - itlminio03-console.dev.itlusions.com
+    host: itlminio03-console.dev.itlusions.com
+    path: /
+    pathType: Prefix
