@@ -37,6 +37,11 @@ spec:
   {{- toYaml . | nindent 4 }}
   {{- end }}
   {{- end }}
+  sideCars:
+    containers:
+      - name: metrics-exporter
+        image: quay.io/minio/metrics-exporter:latest
+        args: ["--metrics-endpoint", ":9000"]
   pools:
     {{- range .pools }}
     - servers: {{ .servers | default 4 }}
@@ -60,7 +65,7 @@ spec:
           {{- end }}
           accessModes:
             - ReadWriteOnce
-          sidecars:
+          sideCars:
             containers:
               - name: metrics-exporter
                 image: quay.io/minio/metrics-exporter:latest
