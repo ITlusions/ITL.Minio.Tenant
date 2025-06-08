@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: minio-oidc
+type: Opaque
+stringData:
+    MINIO_IDENTITY_OPENID_CONFIG_URL_PRIMARY_IAM: "https://sts.itlusions.com/realms/itlusions/.well-known/openid-configuration"
+    MINIO_IDENTITY_OPENID_CLIENT_ID_PRIMARY_IAM:       "MINIO_CLIENT"
+    MINIO_IDENTITY_OPENID_CLIENT_SECRET_PRIMARY_IAM:   "MINIO_CLIENT_SECRET"
+    MINIO_IDENTITY_OPENID_DISPLAY_NAME_PRIMARY_IAM:    "My Keycloak SSO"
+    MINIO_IDENTITY_OPENID_SCOPES_PRIMARY_IAM:          "openid,email,preferred_username"
+    MINIO_IDENTITY_OPENID_REDIRECT_URI_DYNAMIC_PRIMARY_IAM: "on"
