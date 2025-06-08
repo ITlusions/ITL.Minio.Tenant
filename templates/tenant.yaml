@@ -45,6 +45,11 @@ spec:
       {{- if .runtimeClassName }}
       runtimeClassName: {{ .runtimeClassName }}
       {{- end }}
+      sideCars: []
+            # containers:
+            #   - name: metrics-exporter
+            #     image: quay.io/minio/metrics-exporter:latest
+            #     args: ["--metrics-endpoint", ":9000"]
       volumeClaimTemplate:
         metadata:
           name: data
@@ -60,11 +65,6 @@ spec:
           {{- end }}
           accessModes:
             - ReadWriteOnce
-          sideCars: []
-            # containers:
-            #   - name: metrics-exporter
-            #     image: quay.io/minio/metrics-exporter:latest
-            #     args: ["--metrics-endpoint", ":9000"]
           resources:
             requests:
               storage: {{ .size | default "10Gi" }}
