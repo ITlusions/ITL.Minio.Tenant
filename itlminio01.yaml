@@ -19,6 +19,7 @@ tenant:
   configSecret:
     name: itlminio01-env-configuration
     existingSecret: false
+    openidClientSecret: "override"
   poolsMetadata:
     annotations: { }
     labels: { }
