@@ -150,8 +150,6 @@ spec:
   {{- with (dig "env" (list) .) }}
   env: {{- toYaml . | nindent 4 }}
   {{- end }}
-    - name: test
-      value: test
   {{- if dig "priorityClassName" "" . }}
   priorityClassName: {{ dig "priorityClassName" "" . }}
   {{- end }}
