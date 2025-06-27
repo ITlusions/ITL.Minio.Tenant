@@ -1,4 +1,5 @@
 tenant:
+  openid: {}
   name: itlminio01
   image:
     repository: quay.io/minio/minio
