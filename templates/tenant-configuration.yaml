@@ -14,7 +14,7 @@
 {{- $secretName := dig "tenant" "configSecret" "name" "" (.Values | merge (dict)) -}}
 {{- $namespace := .Release.Namespace -}}
 {{- $existingSecret := lookup "v1" "Secret" $namespace $secretName -}}
-{{- $generatedConfigEnv := include "tenant.configEnv" . | nindent 4 -}}
+{{- $generatedConfigEnv := include "minio-operator.envExports" . | nindent 4 -}}
 {{- $existingConfigEnv := "" -}}
 {{- if $existingSecret }}
   {{- if hasKey $existingSecret.data "config.env" }}
