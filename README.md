@@ -29,3 +29,9 @@ helm install --namespace tenant-ns \
 ```
 
 This creates a 4 Node MinIO Tenant (cluster). To change the default values, take a look at various [values.yaml](https://github.com/minio/operator/blob/master/helm/tenant/values.yaml).
+
+
+
+**Niels Weistra** at **n.weistra@itlusions.com**.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white)](https://nl.linkedin.com/in/nielswei)
