@@ -28,7 +28,7 @@ tenant:
       name: itlminio01-pool-0
       volumesPerServer: 1
       size: 1Gi
-      storageClassName: openebs-hostpath
+      storageClassName: ha-dbs-lh
       storageAnnotations: { }
       storageLabels: { }
       annotations: { }
