@@ -25,9 +25,9 @@ tenant:
     annotations: { }
     labels: { }
   pools:
-    - servers: 1
-      name: itlminio01-pool-0
-      volumesPerServer: 1
+    - servers: 4
+      name: pool-0
+      volumesPerServer: 2
       size: 5Gi
       storageClassName: ha-dbs-lh
       storageAnnotations: { }
