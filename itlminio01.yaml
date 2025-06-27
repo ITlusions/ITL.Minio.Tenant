@@ -25,7 +25,7 @@ tenant:
     annotations: { }
     labels: { }
   pools:
-    - servers: 4
+    - servers: 1
       name: itlminio01-pool-0
       volumesPerServer: 1
       size: 1Gi
