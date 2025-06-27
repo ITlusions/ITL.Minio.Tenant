@@ -147,8 +147,11 @@ spec:
   {{- with (dig "serviceMetadata" (dict) .) }}
   serviceMetadata: {{- toYaml . | nindent 4 }}
   {{- end }}
+  env:
+    - name: TEST
+      value: "test"
   {{- with (dig "env" (list) .) }}
-  env: {{- toYaml . | nindent 4 }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   {{- if dig "priorityClassName" "" . }}
   priorityClassName: {{ dig "priorityClassName" "" . }}
